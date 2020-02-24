@@ -1,0 +1,19 @@
+{
+  "name": "the_other_mind_v0",
+  "version": "0.1.0",
+  "description": "The Other Mind, first deal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandreb42/The_Other_Mind_v0.git"
+  },
+  "author": "@alexandreb42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandreb42/The_Other_Mind_v0/issues"
+  },
+  "homepage": "https://github.com/alexandreb42/The_Other_Mind_v0#readme"
+}
