@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react"
 
-export default function GameBoardComponent({GameModules}) {
+export default function PlayerCardsComponent({Cards}) {
     return(
         <ul>
-            {GameModules.map(module => (
+            {Cards.map(module => (
                 <li>{module.name}</li>
             ))}
         </ul>

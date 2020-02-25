@@ -1,5 +1,12 @@
-.App {
+.Game {
   text-align: center;
+  display:flex;
+}
+
+.test { 
+  flex-direction: row;
+  justify-content: space-around;
+  background-color:red;
 }
 
 .App-logo {
