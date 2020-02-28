@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 
 import {getData} from "../actions";
 import GameBoardComponent from "../components/GameBoardComponent";
-import PlayerCards from "./PlayerCards";
-
 
 const mapStateToProps = state => ({
     data: state.data,
@@ -18,22 +16,26 @@ const mapDispatchToProps = {
 
 //const ROOT_URL_POKEAPI = "https://pokeapi.co/api/v2";
 
-const style = {border:"solid blue 2px" , color: "blue"};
+const style = {
+    border:"solid blue 2px",
+    color: "blue"
+};
 
 function GameBoard({getData, loading, data, error}) {
     /*React.useEffect(()=>{
         getData(`${ROOT_URL_POKEAPI}/pokemon`);
     },[])
     */
-    
+
     return(
-        //<PlayerCards />
+        <>
         <div style={style}>
-            <h1>GameBoardContainer</h1>
+            <h1>Game Board Container</h1>
             {loading && <p>Chargement...</p>}
             {data && <GameBoardComponent gameModules={data} />}
             {error && <p>Erreur de chargement du plateau de jeu !</p>}
         </div>
+        </>
     )
 }
 

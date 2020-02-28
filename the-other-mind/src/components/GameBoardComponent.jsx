@@ -1,16 +1,27 @@
 import React, { useContext, useState } from "react"
-import PlayerCardsComponent from "./PlayerCardsComponent"
+
+import GamePlayerOneComponent from "./Game/GamePlayerOneComponent"
+import GameOtherPlayerComponent from "./Game/GameOtherPlayerComponent"
+import GameConnectionComponent from "./Game/GameConnectionComponent"
+import GameAskShurikenComponent from "./Game/GameAskShurikenComponent"
+import GameNbShurikenComponent from "./Game/GameNbShurikenComponent"
+import GameNbLifesComponent from "./Game/GameNbLifesComponent"
 
 export default function GameBoardComponent({gameModules}) {
     return(
         <>
-        <p>test de la page Jouer !</p>
+        <p>La page Jouer !</p>
         <ul>
             {gameModules && gameModules.map(module2 => (
                 <li>{module2.name}</li>
             ))}
         </ul>
-        <PlayerCardsComponent />
+        <GamePlayerOneComponent />
+        <GameOtherPlayerComponent />
+        <GameConnectionComponent />
+        <GameAskShurikenComponent />
+        <GameNbShurikenComponent />
+        <GameNbLifesComponent />
         </>
     )
 }
