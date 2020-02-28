@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.css';
+import './styles/index.css';
 import App from './App'
 import * as serviceWorker from './serviceWorker';
 
