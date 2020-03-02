@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import '../styles/components/game.css';
+import '../styles/components/join.css';
 import {getData} from "../actions";
-import GameBoardComponent from "../components/GameBoardComponent";
+import JoinBoardComponent from "../components/JoinBoardComponent";
 
 const mapStateToProps = state => ({
     data: state.data,
@@ -22,7 +22,7 @@ const style = {
     color: "blue"
 };
 
-function GameBoard({getData, loading, data, error}) {
+function JoinBoard({getData, loading, data, error}) {
     /*React.useEffect(()=>{
         getData(`${ROOT_URL_POKEAPI}/pokemon`);
     },[])
@@ -31,13 +31,13 @@ function GameBoard({getData, loading, data, error}) {
     return(
         <>
         <div style={style}>
-            <h1>Game Board Container</h1>
+            <h1>Join Board Container</h1>
             {loading && <p>Chargement...</p>}
-            {data && <GameBoardComponent gameModules={data} />}
+            {data && <JoinBoardComponent gameModules={data} />}
             {error && <p>Erreur de chargement du plateau de jeu !</p>}
         </div>
         </>
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(JoinBoard);

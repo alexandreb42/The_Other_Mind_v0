@@ -1,0 +1,6 @@
+
+.gameComponent {
+  text-align: center;
+  display: flex;
+  border: solid 2px red;
+}

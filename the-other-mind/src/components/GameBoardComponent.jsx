@@ -10,19 +10,19 @@ import GameNbLifesComponent from "./Game/GameNbLifesComponent"
 
 export default function GameBoardComponent({gameModules}) {
     return(
-        <>
-        <p>La page Jouer !</p>
-        <ul>
-            {gameModules && gameModules.map(module2 => (
-                <li>{module2.name}</li>
-            ))}
-        </ul>
-        <GamePlayerOneComponent />
-        <GameOtherPlayerComponent />
-        <GameConnectionComponent />
-        <GameAskShurikenComponent />
-        <GameNbShurikenComponent />
-        <GameNbLifesComponent />
-        </>
+        <div className="gameComponent">
+            <p>La page Jouer !</p>
+            <ul>
+                {gameModules && gameModules.map(module2 => (
+                    <li>{module2.name}</li>
+                ))}
+            </ul>
+            <GamePlayerOneComponent />
+            <GameOtherPlayerComponent />
+            <GameConnectionComponent />
+            <GameAskShurikenComponent />
+            <GameNbShurikenComponent />
+            <GameNbLifesComponent />
+        </div>
     )
 }
