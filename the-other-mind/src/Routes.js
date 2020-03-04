@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 
+import './styles/Routes.css';
 import Header from './components/Menu/Header';
 import Footer from './components/Menu/Footer';
 import Home from './components/HomeComponent';
@@ -10,8 +11,8 @@ import JoinBoardComponent from './components/JoinBoardComponent';
 
 function Routes() {
   return (
-    <>
-      <Router>
+    <div>
+      <Router class ="menu">
         <Header />
         <Switch>
           <Route exact path="/">
@@ -27,13 +28,18 @@ function Routes() {
             <JoinBoardComponent />
           </Route>
         </Switch>
-       <Footer />
+        <Footer />
       </Router>
-    </>
+    </div>
   );
 }
 
 /*
+
+        <Suspense fallback={<div>Chargement...</div>}>
+
+        </Suspense>
+
 <>
   <Router className="test">
     <Link to="/">The Other Mind</Link>

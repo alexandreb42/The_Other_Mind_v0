@@ -4,7 +4,7 @@ import '../../styles/components/Menu/contact.css';
 const Contact = () => {
     return (
         <div>
-            <div className='contact'>CONTACT</div>
+            <div className='contact'>Contact</div>
         </div>  
     )
 }

@@ -1,6 +1,7 @@
 
-.gameComponent {
+/*.gameComponent {
   text-align: center;
-  display: flex;
-  border: solid 2px red;
+  display: grid;
+  border: solid 2px var(--gold-pastel);
 }
+*/

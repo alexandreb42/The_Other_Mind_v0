@@ -23,7 +23,8 @@ const style = {
 };
 
 function GameBoard({getData, loading, data, error}) {
-    /*React.useEffect(()=>{
+    /*
+    React.useEffect(()=>{
         getData(`${ROOT_URL_POKEAPI}/pokemon`);
     },[])
     */
@@ -31,6 +32,7 @@ function GameBoard({getData, loading, data, error}) {
     return(
         <>
         <div style={style}>
+        
             <h1>Game Board Container</h1>
             {loading && <p>Chargement...</p>}
             {data && <GameBoardComponent gameModules={data} />}
