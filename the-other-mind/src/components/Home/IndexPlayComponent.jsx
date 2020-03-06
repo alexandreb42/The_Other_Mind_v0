@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react"
 
-
+/*
 const handleClick = () => {
-    window.location.href('/game');
+    window.location.assign('/game');
 }
+*/
 
 export default function IndexPlayComponent({gameModules}) {
     return(
         <>
-        <a className="gameButton" onClick={()=>handleClick()}>
+        <a className="gameButton" href="./game" >
             Jouer
         </a>
         </>
