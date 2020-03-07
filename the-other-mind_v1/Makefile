@@ -37,13 +37,16 @@ start:
 test:start
 	$(NODE_UTIL) test
 
-clean:
+rm:
 	rm -rf $(NODE_MODULES) $(BUILD_FOLDER)
 	rm *.swp
 
 cleanode:
 	killall node
 
+clean:
+	make $(TAGS) cleanode
+	make $(TAGS) rm
 
 #################
 ### GIT PART
@@ -64,7 +67,7 @@ ginfo:
 	$(GIT_UTIL) status
 
 git:
-	make $(TAGS) clean
+	make $(TAGS) rm
 	make $(TAGS) gpull
 	make $(TAGS) gadd
 	make $(TAGS) gcom

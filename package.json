@@ -1,7 +1,7 @@
 {
-  "name": "the_other_mind_v0",
-  "version": "0.1.0",
-  "description": "The Other Mind, first deal",
+  "name": "The Other Mind",
+  "version": "0.4.0",
+  "description": "The Other Mind, go to the version 1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
