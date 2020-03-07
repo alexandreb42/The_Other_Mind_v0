@@ -24,7 +24,7 @@ deploy:build
 	firebase deploy
 
 start: install
-	$(NODE_UTIL) start &&
+	$(NODE_UTIL) start &
 
 test: install
 	$(NODE_UTIL) test
@@ -43,6 +43,8 @@ gadd:
 	$(GIT_UTIL) add -u
 gcom:
 	$(GIT_UTIL) commit
+gpull:
+	$(GIT_UTIL) pull
 gpush:
 	$(GIT_UTIL) push
 ginfo:
@@ -51,6 +53,7 @@ ginfo:
 
 git:
 	make $(TAGS) clean
+	make $(TAGS) gpull
 	make $(TAGS) gadd
 	make $(TAGS) gcom
 	make $(TAGS) gpush
