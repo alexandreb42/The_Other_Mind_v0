@@ -20,13 +20,19 @@ install:
 build: install
 	$(NODE_UTIL) run build
 
-deploy:build
+login:
+	firebase login
+
+finit:login
+	firebase init
+
+deploy:build login 
 	firebase deploy
 
 start: install
-	$(NODE_UTIL) start &
+	$(NODE_UTIL) start >/dev/null 2>&1 &
 
-test: install
+test:start
 	$(NODE_UTIL) test
 
 clean:
