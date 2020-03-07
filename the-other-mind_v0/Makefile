@@ -29,7 +29,9 @@ finit:login
 deploy:build login
 	$(DEPLOY_UTIL) deploy
 
-start: cleanode install
+start:
+	make $(TAGS) cleanode
+	make $(TAGS) install
 	$(NODE_UTIL) start >/dev/null 2>&1 &
 
 test:start

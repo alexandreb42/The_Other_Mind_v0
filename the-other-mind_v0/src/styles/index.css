@@ -1,0 +1,34 @@
+:root {
+  --blue-dark:#2d2837;
+  --blue:#463c7d;
+  --blue-pastel:#5f5f7d;
+  --green:#7dcd9b;
+  --orange:#f59b55;
+  --gold-pastel:#ccbb59;
+  --white:whitesmoke;
+}
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lacquer&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--white);
+  color: var(--blue-dark);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
+}
+
+.menu {
+  border : solid 2px var(--green);
+}
