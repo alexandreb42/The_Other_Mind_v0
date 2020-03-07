@@ -15,6 +15,7 @@
 a.gameButton {
     width:40%;
     padding:8%;
+    text-decoration: none;
     color:var(--white);
     background-image: linear-gradient(to bottom right, var(--blue),
         var(--blue-dark), var(--blue));

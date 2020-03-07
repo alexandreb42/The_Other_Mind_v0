@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react"
+import { Link } from "react-router-dom"
 
 /*
 const handleClick = () => {
@@ -9,9 +10,9 @@ const handleClick = () => {
 export default function IndexPlayComponent({gameModules}) {
     return(
         <>
-        <a className="gameButton" href="./game" >
+        <Link className="gameButton" to="/game">
             Jouer
-        </a>
+        </Link>
         </>
     )
 }
