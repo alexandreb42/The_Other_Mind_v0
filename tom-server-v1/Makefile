@@ -14,11 +14,9 @@ all:
 #################
 ### NODE & DEPLOY PART
 
-i:install
 install:
-	$(NODE_UTIL) i > npm-i.log 
+	$(NODE_UTIL) i 
 
-b:build
 build: 
 	make $(TAGS) install
 	$(NODE_UTIL) run build
@@ -30,7 +28,6 @@ finit:
 	make $(TAGS) login
 	$(DEPLOY_UTIL) init
 
-d:deploy
 deploy:
 	make $(TAGS) build
 	make $(TAGS) login
@@ -46,7 +43,7 @@ test:start
 
 rm:
 	rm -rf $(NODE_MODULES) $(BUILD_FOLDER)
-	rm *.swp npm-i.log
+	rm *.swp
 
 cleanode:
 	killall node
