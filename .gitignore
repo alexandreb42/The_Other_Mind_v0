@@ -1,3 +1,6 @@
+# Olds
+*.old
+
 # Logs
 logs
 *.log
