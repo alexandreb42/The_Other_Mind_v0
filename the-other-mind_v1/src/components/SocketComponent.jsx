@@ -3,13 +3,35 @@ import socketIOClient from 'socket.io-client'
 import { Link } from "react-router-dom"
 
 export default function SocketComponent({pseudoname, room}) {
+    const [state, setState] = useState("");
+    const [pseudo, setPseudo] = useState("user0");
+
+    function handleChange(event) {
+        //event.preventDefault();
+        document.title = pseudoname + ' - ' + document.title;
+    };
+    
+    function handleSubmit(event) {
+        event.preventDefault();
+        setState({value: event.target.value});
+    };
+
     return(
-    <Link onClick={e => (!pseudoname || !room) ? e.preventDefault() : null}
-        to={`/game?user=${pseudoname}&room=${room}`}>
-        <button className={'button mt-20'} type="submit">
-            Créer un profil
-        </button>
-    </Link>
+        <>
+        {(pseudoname) ? <Link
+            onClick={e => (!pseudoname || !room) ? e.preventDefault() : null}
+            to={`/game?user=${pseudoname}&room=${room}`}>
+            <button className={'button mt-20'} type="submit">
+                Choisir un pseudo
+            </button>
+        </Link> : <div>
+            <label>Choisissez un pseudo</label>
+            <input value={state.value}
+                onChange={(event)=>handleChange(event)} />
+            <input type="submit" value="Envoyer" id="message"/>
+            </div>
+        }
+        </>
     )
     // const localUrl = 'http://localhost:8080';
 

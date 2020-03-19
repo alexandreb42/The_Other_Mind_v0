@@ -6,7 +6,7 @@ var app = require('express')(),
 
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/routes/index.js');
 });
 
 io.sockets.on('connection', function (socket, pseudo) {

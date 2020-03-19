@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react"
 
 
 const handleClick = () => {
-    window.body.className += "hidden";
+    //window.body.className += "hidden";
+    console.log("Clic sur le profil !");
 }
 
 export default function IndexConnectionComponent({gameModules}) {

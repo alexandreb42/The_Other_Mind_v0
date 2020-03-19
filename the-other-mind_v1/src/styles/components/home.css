@@ -14,7 +14,10 @@
 
 a.gameButton {
     width:40%;
+    height:100%;
     padding:8%;
+    /* font-family à garder ou pas */
+    font-family:"Lobster", "Lacquer", "Trade Wind";
     text-decoration: none;
     color:var(--white);
     background-image: linear-gradient(to bottom right, var(--blue),
@@ -22,19 +25,27 @@ a.gameButton {
     font-size: 4em;
     border-radius: 40px/80px;
     box-shadow: var(--blue-pastel) 8px 8px 5px;
+    
+    transition: 0.4s;
 }
 a.gameButton:hover {
     cursor: pointer;
     font-family:"Lobster", "Lacquer", "Trade Wind";
     color: var(--blue-dark);
+    width:30%;
+    height:30%;
     background-image: linear-gradient(70deg, 
         var(--blue-dark), var(--white), var(--blue-dark));
+    font-size: 3em;
     border-radius: 80px/40px;
     box-shadow: var(--blue-dark) 8px 8px 5px;
 
     transition:
-        color 0.5s,
+        color 0.2s,
         background-image 0.2s,
-        border-radius 0.3s,
-        box-shadow 0.4s;
+        border-radius 0.2s,
+        box-shadow 0.3s,
+        font-size 0.2s,
+        width 0.2s,
+        height 0.2s;
 }
