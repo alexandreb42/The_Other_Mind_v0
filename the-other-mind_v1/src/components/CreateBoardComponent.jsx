@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 
-import '../styles/components/create.css';
+import '../styles/create.css';
 import CreateGameNameComponent from "./Create/CreateGameNameComponent"
 import CreateGameParamsComponent from "./Create/CreateGameParamsComponent"
 import CreateGameOkComponent from "./Create/CreateGameOkComponent"

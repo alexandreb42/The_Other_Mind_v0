@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 
-import '../styles/components/join.css';
+import '../styles/join.css';
 import JoinGameInfosComponent from "./Join/JoinGameInfosComponent"
 import CreateInJoinComponent from "./Join/CreateInJoinComponent"
 import JoinGamesListComponent from "./Join/JoinGamesListComponent"

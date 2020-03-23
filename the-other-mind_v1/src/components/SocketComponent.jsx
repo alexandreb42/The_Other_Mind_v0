@@ -2,37 +2,50 @@ import React, { useContext, useState } from "react"
 import socketIOClient from 'socket.io-client'
 import { Link } from "react-router-dom"
 
-export default function SocketComponent({pseudoname, room}) {
+export default function SocketComponent() {
     const [state, setState] = useState("");
-    const [pseudo, setPseudo] = useState("user0");
+    const [pseudoname, setPseudo] = useState("");
 
+
+    function changeTitle(pseudo, title) {
+        return pseudo + ' - ' + title
+    }
     function handleChange(event) {
-        //event.preventDefault();
-        document.title = pseudoname + ' - ' + document.title;
+        event.preventDefault();
+        document.title = changeTitle(pseudoname, document.title);
     };
     
     function handleSubmit(event) {
         event.preventDefault();
+        console.log("pseudo : ", "pseudo", " AND pseudoname : ", pseudoname);
+        setPseudo();
         setState({value: event.target.value});
+        console.log("pseudo : ", "pseudo", " AND pseudoname : ", pseudoname);
     };
 
     return(
         <>
-        {(pseudoname) ? <Link
-            onClick={e => (!pseudoname || !room) ? e.preventDefault() : null}
-            to={`/game?user=${pseudoname}&room=${room}`}>
-            <button className={'button mt-20'} type="submit">
+        {(pseudoname == "")
+            ? (<Link
+            onClick={e => (!pseudoname) ? e.preventDefault() : "test"}
+                to={`/game?user=${pseudoname}`}>
+            <button className={'button mt-20'} value={state.value}
+                onChange={(event)=>handleChange(event)} type="submit">
                 Choisir un pseudo
             </button>
-        </Link> : <div>
-            <label>Choisissez un pseudo</label>
+            </Link>)
+            : (<div>
             <input value={state.value}
-                onChange={(event)=>handleChange(event)} />
-            <input type="submit" value="Envoyer" id="message"/>
-            </div>
+                onChange={(event)=>handleChange(event)}/>
+            <input type="submit" value="Entrer un pseudo" id="message"
+                    onClick={(event)=>handleSubmit(event)}/>
+            </div>)
         }
         </>
     )
+}
+
+
     // const localUrl = 'http://localhost:8080';
 
     // const [pseudoId, setPseudoId] = useState(document.getElementById('pseudoname'));
@@ -126,7 +139,10 @@ export default function SocketComponent({pseudoname, room}) {
     //         </section>
     //     </>
     // )
-}
+
+
+
+
 
 /*
             <h1>Le super Chat temps réel !</h1>

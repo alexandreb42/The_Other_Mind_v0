@@ -10,7 +10,7 @@ export default function IndexConnectionComponent({gameModules}) {
     return(
         <>
         <a className="profil" onClick={()=>handleClick()}>
-            Profil
+            
         </a>
         </>
     )
