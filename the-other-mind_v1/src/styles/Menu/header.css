@@ -18,7 +18,7 @@
 }
 
 .profil {
-    background-image: url(../../../assets/images/profile-image.png);
+    background-image: url(../../assets/images/profile-image.png);
     background-size: cover;
     background-position: center;
     width: 50px;

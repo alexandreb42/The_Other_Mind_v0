@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "../../styles/components/Menu/footer.css"
+import "../../styles/Menu/footer.css"
 import Contact from './Contact';
 import About from './About';
 

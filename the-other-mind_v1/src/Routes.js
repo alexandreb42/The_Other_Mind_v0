@@ -8,6 +8,8 @@ import HomeComponent from './components/HomeComponent';
 import GameBoardComponent from "./components/GameBoardComponent";
 import CreateBoardComponent from "./components/CreateBoardComponent";
 import JoinBoardComponent from './components/JoinBoardComponent';
+import Join from './components/Socket/Join/Join';
+import Chat from './components/Socket/Chat/Chat';
 
 function Routes() {
   return (
@@ -16,6 +18,7 @@ function Routes() {
         <Header />
         <Switch>
           <Route exact path="/">
+            <Join />
             <HomeComponent />
           </Route>
           <Route path="/game">
@@ -27,6 +30,7 @@ function Routes() {
           <Route path="/join">
             <JoinBoardComponent />
           </Route>
+          <Route path="/chat" component={Chat} />
         </Switch>
         <Footer />
       </Router>

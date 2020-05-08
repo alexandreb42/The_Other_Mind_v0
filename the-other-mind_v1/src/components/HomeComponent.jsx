@@ -13,7 +13,6 @@ export default function HomeComponent({gameModules}) {
             <IndexBigTitleComponent className="bigTitle" />
             <IndexPlayComponent />
             <IndexConnectionComponent />
-            <SocketComponent />
         </div>
     )
 }
