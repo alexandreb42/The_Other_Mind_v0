@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>The Other Mind</title>
+        <style>
+            #zone_jeu {
+                float:left;
+            }
+            #zone_chat {
+                float:right;
+                max-width: 42%;
+                overflow:scroll;
+                height:100%;
+                border:solid 1px #cccccc;
+            }
+            #zone_chat strong {
+                color: white;
+                background-color: black;
+                padding: 2px;
+            }
+            
+        </style>
+    </head>
+ 
+    <body>
+        <h1>Le super Jeu temps réel !</h1>
+
+        <div id="pseudoname"></div>
+
+        <section id="main_content">
+
+            <article id="zone_jeu">
+            </article>
+            
+            <article id="zone_chat">
+            </article>
+
+        </section>
+
+
+        <form action="/" method="post" id="formulaire_chat">
+            <input type="text" name="message" id="message"
+                placeholder="Votre message..." size="50" autoFocus />
+            <input type="submit" id="envoi_message" value="Envoyer" />
+        </form>
+
+        <form action="/" method="post" id="formulaire_jeu">
+            <input type="submit" id="jouer" value="Jouer" />
+        </form>
+        <form action="/" method="post" id="formulaire_shuriken">
+            <input type="submit" id="shuriken" value="Demander un Shuriken" />
+        </form>
+
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+
+            // Connexion à socket.io
+            var socket = io.connect('http://localhost:8080');
+
+            // On demande le pseudo, on l'envoie au serveur et on
+            // l'affiche dans le titre
+            var pseudo = prompt('Quel est votre pseudo ?');
+            var room = prompt('Quel est votre groupe ?');
+
+            // socket.emit('join', { pseudo, room }, (error) => {
+            //     if(error) {
+            //         alert(error);
+            //     }
+            // });
+
+            socket.emit('nouveau_joueur', pseudo);
+            document.title = pseudo + ' - ' + room + ' - ' + document.title;
+            $('#pseudoname').html("<p>Vous êtes <em>" + pseudo
+                + "</em>, dans le groupe <em>" + room + "</em></p>");
+
+            /*
+            socket.on('connect', function(data){
+                console.log(io.clients.length);
+            })
+            */
+
+            // Quand on reçoit un message, on l'insère dans la page
+            socket.on('message', function(data) {
+                insereMessage(data.pseudo, data.room, data.message);
+            })
+
+            
+
+            // Quand un joueur demande un Shuriken...
+            socket.on('shuriken', function(data) {
+                demandeShuriken(data.pseudo);
+            })
+
+
+            // Quand un nouveau joueur se connecte, on affiche l'information
+            socket.on('nouveau_joueur', function(pseudo, room) {
+                $('#zone_chat').append('<p><em>' + pseudo
+                    + ' a rejoint le groupe ' + room + ' !</em></p>');
+            })
+
+
+            $('#formulaire_jeu').submit(function (pseudo) {
+                var message = " a joué la carte "
+                    + (1+Math.floor(Math.random() * Math.floor(101))) + " !";
+                socket.emit('message', message);
+                //console.log("lol");
+                // Vide la zone de Chat et remet le focus dessus
+                //$('#message').val('').focus();
+                // Permet de bloquer l'envoi "classique" du formulaire
+                return false;
+            });
+            
+            $('#formulaire_shuriken').submit(function (pseudo) {
+                var message = " a demandé un Shuriken !"
+                socket.emit('message', message);
+                //console.log("lol");
+                // Vide la zone de Chat et remet le focus dessus
+                //$('#message').val('').focus();
+                // Permet de bloquer l'envoi "classique" du formulaire
+                return false;
+            });
+            
+
+            // Lorsqu'on envoie le formulaire de chat,
+            // on transmet le message
+            // et on l'affiche sur la page
+            $('#formulaire_chat').submit(function () {
+                var message = $('#message').val();
+                if (message != "") {
+                    // Transmet le message aux autres
+                    socket.emit('message', message);
+                    // Affiche le message aussi sur notre page
+                    insereMessage(pseudo, room, message);
+                }
+                // Vide la zone de Chat et remet le focus dessus
+                $('#message').val('').focus();
+                // Permet de bloquer l'envoi "classique" du formulaire
+                return false;
+            });
+            
+
+            // Ajoute un message dans la page
+            function insereMessage(pseudo, room, message) {
+                $('#zone_chat').append('<p><strong>' + pseudo
+                    + '</strong> ' + message + '</p>');
+            }
+        </script>
+    </body>
+</html>
+
