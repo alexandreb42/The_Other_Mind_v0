@@ -1,0 +1,10 @@
+1. installer les modules de node nécessaires avec :
+npm i
+
+2. lancer le serveur avec :
+nodemon app.js
+
+3. tester des clients à l'adresse :
+localhost:8080
+
+
