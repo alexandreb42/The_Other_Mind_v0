@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react"
+import { Link } from "react-router-dom";
 
 
 const handleClick = () => {
@@ -6,12 +7,12 @@ const handleClick = () => {
     console.log("Clic sur le profil !");
 }
 
+// onClick={()=>handleClick()}
 export default function IndexConnectionComponent({gameModules}) {
     return(
-        <>
-        <a className="profil" onClick={()=>handleClick()}>
-            
-        </a>
-        </>
+    <>
+        <Link className="profil" to="/api/stuff" />
+
+    </>
     )
 }

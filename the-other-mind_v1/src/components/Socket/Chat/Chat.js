@@ -11,7 +11,7 @@ import './Chat.css';
 
 let socket;
 
-const Chat = ({ location }) => {
+const Chat = ({ location}, {userData} ) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [users, setUsers] = useState('');
@@ -26,11 +26,12 @@ const Chat = ({ location }) => {
     // queryString.parse(location.search)
     // transforme un string de parametres GET en objet composé de ces parametres
     const { name, room } = queryString.parse(location.search);
+    //const {name, room} = this.props.userData;
 
     socket = io(ENDPOINT);
 
     setRoom(room);
-    setName(name)
+    setName(name);
 
     socket.emit('join', { name, room }, (error) => {
       if(error) {

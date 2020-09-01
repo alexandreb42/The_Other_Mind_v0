@@ -16,7 +16,7 @@ const mapDispatchToProps = {
     getData
 };
 
-//const ROOT_URL_POKEAPI = "https://pokeapi.co/api/v2";
+const ROOT_URL_TOMAPI = "https://localhost:5000/api/";
 
 const style = {
     border:"solid blue 2px",
@@ -24,16 +24,15 @@ const style = {
 };
 
 function Home({getData, loading, data, error}) {
-    /*React.useEffect(()=>{
-        getData(`${ROOT_URL_POKEAPI}/pokemon`);
+    React.useEffect(()=>{
+        getData(`${ROOT_URL_TOMAPI}/stuff`);
     },[])
-    */
     
     return(
         <div style={style}>
             <h1>Page d'accueil</h1>
             {loading && <p>Page d'accueil...</p>}
-            {data && <HomeComponent cards={data} />}
+            {data && <HomeComponent gameModules={data} />}
             {error && <p>Erreur de chargement de la page d'accueil !</p>}
         </div>
     )

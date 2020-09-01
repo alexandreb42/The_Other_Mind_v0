@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/alexandreb42/The_Other_Mind_v0/issues"
   },
-  "homepage": "https://github.com/alexandreb42/The_Other_Mind_v0#readme"
+  "homepage": "https://github.com/alexandreb42/The_Other_Mind_v0#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "jsonwebtoken": "^8.5.1"
+  }
 }

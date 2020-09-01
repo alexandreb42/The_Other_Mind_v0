@@ -33,7 +33,7 @@ function Socket({getData, loading, data, error}) {
         <div style={style}>
             <h1>Join Board Container</h1>
             {loading && <p>Chargement de la socket...</p>}
-            {data && <SocketComponent pseudoname={data} />}
+            {data && <SocketComponent username={getData} />}
             {error && <p>Erreur de chargement de la socket !</p>}
         </div>
         </>
