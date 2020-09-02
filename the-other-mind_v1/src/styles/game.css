@@ -8,10 +8,12 @@
 .game-container {
   display: flex;
   flex-direction: column;
+  align-self: center;
 }
 
 .game-header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -67,4 +69,10 @@
 
 .hidden-card {
   display: none;
+}
+
+.game-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

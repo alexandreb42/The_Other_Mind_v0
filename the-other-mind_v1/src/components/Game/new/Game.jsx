@@ -61,7 +61,10 @@ const Game = () => {
           </div>
         ))}
       </section>
-      <footer className="game-footer"></footer>
+      <footer className="game-footer">
+        <aside>Icone user</aside>
+        <aside>Demander un shuriken </aside>
+      </footer>
     </div>
   );
 };
