@@ -1,44 +1,59 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import "../../../../src/styles/game.css";
+import "../../../styles/game.css";
 
-const PLAYERS = [
-  {
-    username: "player1",
-    lifesLeft: 5,
-    level: 4,
-    cardsLeft: [45, 99, 54],
-  },
-  {
-    username: "player2",
-    lifesLeft: 1,
-    level: 4,
-    cardsLeft: [48, 25, 67],
-  },
-  {
-    username: "player3",
-    lifesLeft: 5,
-    level: 4,
-    cardsLeft: [31, 90, 55],
-  },
-  {
-    username: "player4",
-    lifesLeft: 3,
-    level: 4,
-    cardsLeft: [27, 78, 43],
-  },
-];
+const LEVEL = 3;
+const PLAYERNUMBER = 4;
 
 const Game = () => {
   const [level, setLevel] = useState(0);
-  const [cards, setCards] = useState([]);
   const [players, setPlayers] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState({});
 
+  const generateRandomNumber = () => {
+    return parseInt(100 * Math.random(), 10);
+  };
+
+  const randomizeDifferentsNumbers = (size) => {
+    let array = [];
+    for (let i = 0; i < size; i++) {
+      let randomNumber = generateRandomNumber();
+      const subArray = array;
+      while (subArray.includes(randomNumber)) {
+        randomNumber = generateRandomNumber();
+      }
+      array[i] = randomNumber;
+    }
+    return array;
+  };
+
+  const setTheArray = () => {
+    const cards = randomizeDifferentsNumbers(LEVEL * PLAYERNUMBER);
+    let k = 0;
+    for (let i = 0; i < PLAYERNUMBER; i++) {
+      let cardsLeft = [];
+      for (let j = 0; j < LEVEL; j++) {
+        cardsLeft[j] = cards[k];
+        k++;
+      }
+      const player = {
+        username: "player" + (i + 1),
+        lifesLeft: 3,
+        level: LEVEL,
+        cardsLeft,
+      };
+      console.log(player);
+
+      players.push(player);
+    }
+  };
+
   useEffect(() => {
-    setCurrentPlayer(PLAYERS[0]);
-    setLevel(4);
-    setPlayers(PLAYERS);
+    setLevel(LEVEL);
+
+    setTheArray();
+
+    setCurrentPlayer(players[0]);
   }, []);
 
   return (
@@ -50,7 +65,6 @@ const Game = () => {
       <section className="game-section">
         {players.map((player, index) => (
           <div key={index} className={`game-cards-container-${index + 1}`}>
-            {console.log(index + 1)}
             {player.cardsLeft.map((card, index) => (
               <Card
                 key={index}
