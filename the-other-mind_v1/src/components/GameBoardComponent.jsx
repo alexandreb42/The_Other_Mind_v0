@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import "../styles/game.css";
+import "../styles/game.scss";
 import GamePlayerOneComponent from "./Game/GamePlayerOneComponent";
 import GameOtherPlayerComponent from "./Game/GameOtherPlayerComponent";
 import GameConnectionComponent from "./Game/GameConnectionComponent";

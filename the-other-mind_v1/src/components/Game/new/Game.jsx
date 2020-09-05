@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import "../../../styles/game.css";
+import "../../../styles/game.scss";
 
 const LEVEL = 3;
 const PLAYERNUMBER = 4;
