@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "../../styles/auth.css";
 import axios from "axios";
+import { signupUser } from "../../redux/actions/userActions";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const signup = useCallback((user, history) =>
+    dispatch(signupUser(user, history), [dispatch])
+  );
+
+  const history = useHistory();
+
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -18,13 +28,14 @@ const Signup = () => {
       email,
       password,
     };
-    axios
-      .post("http://localhost:5000/api/auth/signup", userToCreate)
-      .then((response) => {
-        setMessage(response.data);
-        // setCreatedOrNot(true);
-      })
-      .catch((err) => console.log(err));
+    // axios
+    //   .post("http://localhost:5000/api/auth/signup", userToCreate)
+    //   .then((response) => {
+    //     setMessage(response.data);
+    //     // setCreatedOrNot(true);
+    //   })
+    //   .catch((err) => console.log(err));
+    signup(userToCreate, history);
   };
 
   //   const renderMessage = () => <p>{message}</p>;
