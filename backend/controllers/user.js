@@ -3,6 +3,18 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
+exports.getUser = (req, res, next) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      console.log(req.params, user);
+      if (!user) {
+        return res.status(401).json({ error: "User not found !" });
+      }
+      res.status(200).json(user.email);
+    })
+    .catch((error) => res.status(500).json({ error }));
+};
+
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
