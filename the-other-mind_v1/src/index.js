@@ -1,20 +1,18 @@
-import React, { useState, createContext, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import './styles/index.css';
-import App from './App'
-import * as serviceWorker from './serviceWorker';
+import "./styles/index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-import configureStore from './store';
-import {Provider} from 'react-redux';
-
-const store = configureStore();
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

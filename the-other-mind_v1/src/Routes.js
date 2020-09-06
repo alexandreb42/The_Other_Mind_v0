@@ -12,6 +12,8 @@ import Join from "./components/Socket/Join/Join";
 import Chat from "./components/Socket/Chat/Chat";
 import Login from "./components/Menu/Login";
 import Signup from "./components/Menu/Signup";
+import User from "./components/Menu/User";
+import AuthRoute from "./util/AuthRoute";
 
 function Routes() {
   return (
@@ -32,9 +34,11 @@ function Routes() {
           <Route path="/join">
             <JoinBoardComponent />
           </Route>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
+          <AuthRoute exact path="/login" component={Login} />
+          <AuthRoute exact path="/signup" component={Signup} />
           <Route path="/chat" component={Chat} />
+          <Route exact path="/users/:id" component={User} />
+          <Route exact path="/logout" component={Signup} />
         </Switch>
         <Footer />
       </Router>

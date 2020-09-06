@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { createSelectorHook } from "react-redux";
 import thunk from "redux-thunk";
-import userReducer from "./reducers/userReducer";
+import userReducers from "./reducers/userReducers";
 import uiReducers from "./reducers/uiReducers";
 
 const initialState = {};
@@ -11,8 +11,8 @@ export const useSelector = createSelectorHook(initialState);
 const middleware = [thunk];
 
 const reducers = combineReducers({
-  user: userReducer,
-  ui: uiReducer,
+  user: userReducers,
+  ui: uiReducers,
 });
 
 export default createStore(

@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "../../styles/auth.css";
-import axios from "axios";
+import { loginUser } from "../../redux/actions/userActions";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const login = useCallback((user, history) =>
+    dispatch(loginUser(user, history), [dispatch])
+  );
+
+  const history = useHistory();
+
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -15,13 +24,7 @@ const Login = () => {
       email,
       password,
     };
-    axios
-      .post("http://localhost:5000/api/auth/login", userToConnect)
-      .then((response) => {
-        console.log(response.data);
-        setMessage(response.data);
-      })
-      .catch((err) => console.log(err));
+    login(userToConnect, history);
   };
 
   function handleChange(e) {

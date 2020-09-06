@@ -1,8 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getUserData } from "../../redux/actions/userActions";
+import axios from "axios";
 import "../../styles/Menu/header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const getUser = useCallback((id, history) =>
+    dispatch(getUserData(id), [dispatch])
+  );
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    console.log("enter in useEffect");
+    axios
+      .get(`http://localhost:5000/api/auth/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="header">
       <div className="profil"></div>
@@ -27,6 +49,9 @@ function Header() {
         </li>
         <li className="link">
           <Link to="/signup">S'inscrire</Link>
+        </li>
+        <li className="link">
+          <Link to={`/users/${user._id}`}>Utilisateur</Link>
         </li>
       </ul>
     </div>
