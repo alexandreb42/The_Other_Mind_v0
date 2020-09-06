@@ -6,6 +6,7 @@ import {
   SET_ERRORS,
   SET_UNAUTHENTICATED,
   SET_USER,
+  SET_AUTHENTICATED,
 } from "../types";
 
 export const getUserData = (id) => (dispatch) => {
@@ -31,6 +32,7 @@ export const loginUser = (userData, history) => (dispatch) => {
       setAuthorizationHeader(res.data.token);
       //   dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: SET_AUTHENTICATED });
       history.push("/");
     })
     .catch((err) => {
