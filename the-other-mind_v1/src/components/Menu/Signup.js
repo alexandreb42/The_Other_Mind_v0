@@ -15,6 +15,7 @@ const Signup = () => {
 
   const [state, setState] = useState({
     email: "",
+    username: "",
     password: "",
     confirmPassword: "",
   });
@@ -26,6 +27,7 @@ const Signup = () => {
     e.preventDefault();
     const userToCreate = {
       email,
+      username,
       password,
     };
     // axios
@@ -49,7 +51,7 @@ const Signup = () => {
     });
   }
 
-  const { email, password, confirmPassword } = state;
+  const { email, password, confirmPassword, username } = state;
 
   return (
     <div className="login-form">
@@ -59,6 +61,14 @@ const Signup = () => {
         placeholder="email"
         name="email"
         value={email}
+        onChange={handleChange}
+      />
+      <input
+        label="Nom d'utilisateur"
+        type="text"
+        placeholder="Nom d'utilisateur"
+        name="username"
+        value={username}
         onChange={handleChange}
       />
       <input

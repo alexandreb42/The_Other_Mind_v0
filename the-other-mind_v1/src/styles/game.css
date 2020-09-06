@@ -38,37 +38,25 @@
   align-items: center;
 }
 
-.game-cards-container-1 {
+.stack {
   display: flex;
-  flex-direction: row;
-  bottom: 0;
-  left: 350px;
-}
-.game-cards-container-2 {
-  display: flex;
-  flex-direction: row;
-  transform: rotate(-90deg);
-  right: 0;
-}
-.game-cards-container-3 {
-  display: flex;
-  flex-direction: row;
-  transform: rotate(180deg);
-  top: 0;
-}
-.game-cards-container-4 {
-  display: flex;
-  flex-direction: row;
-  transform: rotate(90deg);
-  left: 0;
-}
-.game-cards-container-5 {
-  display: flex;
-  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding-right: 5px;
+  width: 50px;
+  height: 80px;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.hidden-card {
-  display: none;
+.stack-container {
+}
+
+.current-player-cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
 }
 
 .game-footer {

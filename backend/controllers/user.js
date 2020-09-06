@@ -10,7 +10,10 @@ exports.getUser = (req, res, next) => {
       if (!user) {
         return res.status(401).json({ error: "User not found !" });
       }
-      res.status(200).json(user.email);
+      const userPublicInfo = {
+        username: user.username,
+      };
+      res.status(200).json(userPublicInfo);
     })
     .catch((error) => res.status(500).json({ error }));
 };
@@ -21,6 +24,7 @@ exports.signup = (req, res, next) => {
     .then((hash) => {
       const user = new User({
         email: req.body.email,
+        username: req.body.username,
         password: hash,
       });
       console.log(user);

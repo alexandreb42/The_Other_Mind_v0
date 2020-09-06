@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import "../../../styles/game.scss";
+import "../../../styles/game.css";
+import Stack from "./Stack";
+
+import socketIOClient from "socket.io-client";
 
 const LEVEL = 3;
-const PLAYERNUMBER = 4;
+const PLAYERNUMBER = 3;
 
 const Game = () => {
   const [level, setLevel] = useState(0);
+  const [response, setResponse] = useState("");
   const [players, setPlayers] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState({});
 
   const generateRandomNumber = () => {
-    return parseInt(100 * Math.random(), 10);
+    return parseInt(100 * Math.random() + 1, 10);
   };
 
   const randomizeDifferentsNumbers = (size) => {
@@ -49,6 +53,11 @@ const Game = () => {
   };
 
   useEffect(() => {
+    const socket = socketIOClient("http://localhost:4000");
+    console.log(socket);
+    socket.on("FromAPI", (data) => {
+      setResponse(data);
+    });
     setLevel(LEVEL);
 
     setTheArray();
@@ -64,20 +73,27 @@ const Game = () => {
       </header>
       <section className="game-section">
         {players.map((player, index) => (
-          <div key={index} className={`game-cards-container-${index + 1}`}>
-            {player.cardsLeft.map((card, index) => (
-              <Card
-                key={index}
-                value={card}
-                display={player === currentPlayer}
-              />
-            ))}
-          </div>
+          <>
+            {player === currentPlayer ? (
+              <div key={index} className="current-player-cards-container">
+                {player.cardsLeft.map((card, index) => (
+                  <Card key={index} value={card} />
+                ))}
+              </div>
+            ) : (
+              <div key={index} className="stack-container">
+                <Stack key={index} cardsLeft={player.cardsLeft.length} />
+              </div>
+            )}
+          </>
         ))}
       </section>
       <footer className="game-footer">
         <aside>Icone user</aside>
         <aside>Demander un shuriken </aside>
+        <p>
+          It's <time dateTime={response}>{response}</time>
+        </p>
       </footer>
     </div>
   );
